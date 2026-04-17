@@ -1,5 +1,3 @@
-import '@bcbsnc/litehouse/litehouse';
-import '@bcbsnc/litehouse/style.css';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App.tsx';

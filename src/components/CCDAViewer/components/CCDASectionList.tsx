@@ -21,7 +21,7 @@ export const CCDASectionList: React.FC<CCDASectionListProps> = ({
                         key={idx}
                         className={`px-3 py-2 rounded-lg cursor-pointer ${
                             selectedSection === `${section.resourceType}-${section.index}`
-                                ? 'bg-blue-600 text-white'
+                                ? 'bg-[#093452] text-white'
                                 : 'hover:bg-gray-100'
                         }`}
                         onClick={() => onSectionSelect(section.resourceType, section.index)}

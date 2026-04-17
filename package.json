@@ -1,5 +1,5 @@
 {
-    "name": "bcbsnc-patient-viewer",
+    "name": "fhir-workspace",
     "private": true,
     "version": "2.0.0",
     "type": "module",
@@ -13,7 +13,6 @@
     "dependencies": {
         "@azure/msal-browser": "^4.2.1",
         "@azure/msal-react": "^3.0.5",
-        "@bcbsnc/litehouse": "^4.12.1",
         "@react-pdf/renderer": "^4.2.2",
         "@types/fhir": "^0.0.41",
         "@types/xmldom": "^0.1.34",

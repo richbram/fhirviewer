@@ -19,10 +19,10 @@ export const Loader: React.FC<LoaderProps> = ({ size = 'lg', message }) => {
 
     return (
         <div className="flex flex-col items-center justify-center py-8">
-            <div className={`animate-spin rounded-full ${loaderSize} border-4 border-blue-500 border-t-transparent`}>
+            <div className={`animate-spin rounded-full ${loaderSize} border-4 border-[#e57f25] border-t-transparent`}>
                 <div className="w-full h-full rounded-full bg-transparent"></div>
             </div>
-            {message && <p className="mt-2 text-gray-600">{message}</p>}
+            {message && <p className="mt-2 text-slate-600">{message}</p>}
         </div>
     );
 };

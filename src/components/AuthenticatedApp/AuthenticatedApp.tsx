@@ -19,21 +19,28 @@ export const AuthenticatedApp = ({ children }: Props) => {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50 px-6">
-        <div className="w-full max-w-md rounded-xl bg-white p-8 shadow-md border border-slate-200">
-          <h1 className="text-2xl font-semibold text-slate-900 mb-3">Authentication required</h1>
-          <p className="text-sm text-slate-600 mb-6">
+      <div className="flex min-h-screen items-center justify-center bg-slate-50 px-6">
+        <div className="w-full max-w-md rounded-xl border border-slate-200 bg-white p-8 shadow-md">
+          <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-[#093452] shadow-sm">
+            <img
+              src="/assets/iks-health-white-logo.webp"
+              alt="Placeholder white healthcare logo"
+              className="max-h-9 w-auto object-contain"
+            />
+          </div>
+          <h1 className="mb-3 text-2xl font-semibold text-slate-900">Authentication required</h1>
+          <p className="mb-6 text-sm text-slate-600">
             {mode === 'gcp'
               ? 'Use Google Cloud authentication to request a token for the configured FHIR endpoint.'
               : 'Sign in with Microsoft authentication to continue.'}
           </p>
           {error && (
-            <p className="text-sm text-red-600 mb-4">{error}</p>
+            <p className="mb-4 text-sm text-red-600">{error}</p>
           )}
           <button
             type="button"
             onClick={login}
-            className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-5 py-3 text-sm font-medium text-white hover:bg-blue-700"
+            className="inline-flex items-center justify-center rounded-lg bg-[#e57f25] px-5 py-3 text-sm font-medium text-white transition hover:bg-[#cf6f1f]"
           >
             {mode === 'gcp' ? 'Sign in with Google Cloud' : 'Sign in'}
           </button>
