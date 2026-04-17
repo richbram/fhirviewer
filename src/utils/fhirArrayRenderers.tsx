@@ -270,21 +270,19 @@ export const XmlAttachmentDownloader = ({ data, title }: { data: string, title?:
     const filename = `${title || 'document'}.xml`;
 
     return (
-        <container spacing="none" content-width="fluid" padding-bottom="xxs" padding-top="xxs" theme="transparent">
-            <typography>
-                <strong>{title || 'XML Document'}</strong>:{' '}
-                <a
-                    href={url}
-                    download={filename}
-                    onClick={() => {
-                        // Clean up after download begins
-                        requestAnimationFrame(cleanup);
-                    }}
-                >
-                    Download
-                </a>
-            </lh-typography>
-        </lh-container>
+        <div className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-700">
+            <strong>{title || 'XML Document'}</strong>:{' '}
+            <a
+                href={url}
+                download={filename}
+                className="font-medium text-[#cf6f1f] hover:text-[#b86118]"
+                onClick={() => {
+                    requestAnimationFrame(cleanup);
+                }}
+            >
+                Download
+            </a>
+        </div>
     );
 };
 
@@ -300,22 +298,19 @@ export const XmlAttachmentRenderer = ({ data }: { data: string }): React.ReactEl
     };
 
     return (
-        <container spacing="none" content-width="fluid" padding-bottom="xxs" padding-top="xxs" theme="transparent">
-            <typography>
+        <div className="space-y-3 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-700">
+            <div>
                 <strong>CCDAViewer</strong>:{' '}
                 <button
-                    size="medium"
                     type="button"
-                    variant="outlined"
-                    icon="book-open"
-                    icon-position="right"
                     onClick={toggleViewer}
+                    className="ml-2 rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition hover:bg-slate-100"
                 >
                     View
-                </lh-button>
-            </lh-typography>
+                </button>
+            </div>
             {showViewer && <CCDAViewer ccdaXml={decodedData} documentType="History-and-Physical" />}
-        </lh-container>
+        </div>
     );
 };
 
@@ -323,19 +318,19 @@ export const XmlAttachmentRenderer = ({ data }: { data: string }): React.ReactEl
  * Renders a generic attachment with a link
  */
 export const LinkAttachmentRenderer = ({ url, title, contentType }: { url: string, title?: string, contentType?: string }): React.ReactElement => (
-    <typography>
+    <div className="text-sm text-slate-700">
         <strong>{title || 'Attachment'}</strong>:{' '}
-        <a href={url} target="_blank" rel="noopener noreferrer">
+        <a className="font-medium text-[#cf6f1f] hover:text-[#b86118]" href={url} target="_blank" rel="noopener noreferrer">
             {contentType?.startsWith('image/') ? 'View Image' : 'Download'}
         </a>
-    </lh-typography>
+    </div>
 );
 
 /**
  * Renders an unavailable attachment
  */
 export const UnavailableAttachmentRenderer = ({ title }: { title?: string }): React.ReactElement => (
-    <typography><strong>{title || 'Attachment'}</strong>: No content available</lh-typography>
+    <div className="text-sm text-slate-500"><strong>{title || 'Attachment'}</strong>: No content available</div>
 );
 
 /**

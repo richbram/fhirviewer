@@ -172,7 +172,7 @@ const CodedValueSelect: React.FC<CodedValueSelectProps> = ({
                             key={`${opt.code}-${idx}`}
                             value={opt.code}
                             className={`px-4 py-4 text-lg ${
-                                value === opt.code ? 'bg-blue-50 font-bold' : 'bg-white font-normal'
+                                value === opt.code ? 'bg-[#fff4ea] font-bold text-[#093452]' : 'bg-white font-normal'
                             }`}
                         >
                             {opt.display || opt.code}

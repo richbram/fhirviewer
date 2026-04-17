@@ -16,8 +16,8 @@
         ]
     },
     "5": {
-        "name": "bcbsa",
-        "description": "A staging partition for BCBSA ADT data",
+        "name": "payer-adt",
+        "description": "A staging partition for payer ADT data",
         "resources": [
             "Account",
             "CareTeam",

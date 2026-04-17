@@ -1,107 +1,68 @@
 import { Patient } from 'fhir/r4';
 import React from 'react';
+
 interface PatientDetailSidebarProps {
-	patient: Patient;
-	refreshPage: () => void;
+    patient: Patient;
+    refreshPage: () => void;
 }
 
 const PatientDetailSidebar: React.FC<PatientDetailSidebarProps> = ({ patient, refreshPage }) => {
-	if (!patient) {
-		return <div>No patient data available</div>;
-	}
+    if (!patient) {
+        return <div>No patient data available</div>;
+    }
 
-	const { name, gender, birthDate, telecom, address } = patient;
+    const { name, gender, birthDate, telecom, address } = patient;
 
-	const fullName = name?.[0]
-		? `${name[0].given?.join(' ')} ${name[0].family}`
-		: 'Not Received';
-	const email = telecom?.find((t: any) => t.system === 'email')?.value || 'Not Received';
-	const phone = telecom?.find((t: any) => t.system === 'phone')?.value || 'Not Received';
-	const fullAddress = address?.[0]
-		? `${address[0].line?.join(', ')}, ${address[0].city}, ${address[0].state}, ${address[0].postalCode}`
-		: 'Not Received';
+    const fullName = name?.[0]
+        ? `${name[0].given?.join(' ')} ${name[0].family}`
+        : 'Not Received';
+    const email = telecom?.find((t: any) => t.system === 'email')?.value || 'Not Received';
+    const phone = telecom?.find((t: any) => t.system === 'phone')?.value || 'Not Received';
+    const fullAddress = address?.[0]
+        ? `${address[0].line?.join(', ')}, ${address[0].city}, ${address[0].state}, ${address[0].postalCode}`
+        : 'Not Received';
 
-	const age = birthDate
-		? `${new Date().getFullYear() - new Date(birthDate).getFullYear()} years`
-		: 'Not Available';
+    const age = birthDate
+        ? `${new Date().getFullYear() - new Date(birthDate).getFullYear()} years`
+        : 'Not Available';
 
-	const handleAttachDocument = () => {
-		console.log('test');
-	};
+    const handleAttachDocument = () => {
+        console.log('test');
+    };
 
-	return (
-		<container
-			theme="primary-dark"
-			margin-bottom="none"
-			margin-top="none"
-			content-width="fluid"
-			padding-top="md"
-			padding-bottom="xl"
-		>
-			<typography variant="h2" display-as="h5" alt alignment="left">{fullName}</lh-typography>
-			<hr style={{ border: '1px solid #ccc', margin: '16px 0' }} />
+    return (
+        <div className="rounded-2xl bg-slate-900 p-6 text-white shadow-sm">
+            <h2 className="text-xl font-semibold">{fullName}</h2>
+            <hr className="my-4 border-slate-700" />
 
-			<typography>
-				<strong>Gender:</strong> {gender || 'Not Received'}
-			</lh-typography>
-			<typography>
-				<strong>DOB:</strong> {birthDate || 'Not Received'}
-			</lh-typography>
-			<typography>
-				<strong>Age:</strong> {age}
-			</lh-typography>
-			<typography>
-				<strong>Email:</strong> {email}
-			</lh-typography>
-			<typography>
-				<strong>Phone:</strong> {phone}
-			</lh-typography>
-			<typography>
-				<strong>Address:</strong> {fullAddress}
-			</lh-typography>
-			<div style={{ marginBottom: '16px' }}>
+            <div className="space-y-3 text-sm text-slate-200">
+                <p><strong className="text-white">Gender:</strong> {gender || 'Not Received'}</p>
+                <p><strong className="text-white">DOB:</strong> {birthDate || 'Not Received'}</p>
+                <p><strong className="text-white">Age:</strong> {age}</p>
+                <p><strong className="text-white">Email:</strong> {email}</p>
+                <p><strong className="text-white">Phone:</strong> {phone}</p>
+                <p><strong className="text-white">Address:</strong> {fullAddress}</p>
+            </div>
 
-			</div>
-			{/* <div style={{ marginBottom: '16px' }}>
-				<button
-					size="medium"
-					type="button"
-					variant="outlined"
-					icon-position="left"
-				>
-					Select
-				</lh-button>
-			</div> */}
+            <div className="mt-6 space-y-3">
+                <button
+                    type="button"
+                    onClick={refreshPage}
+                    className="w-full rounded-lg border border-slate-600 bg-slate-800 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-700"
+                >
+                    Refresh
+                </button>
 
-			<div style={{ marginBottom: '16px' }}>
-				<button
-					size="medium"
-					type="button"
-					variant="outlined"
-					icon="arrow-clockwise"
-					icon-position="left"
-					onClick={refreshPage}
-				>
-					Refresh
-				</lh-button>
-			</div>
-
-			<div style={{ marginBottom: '16px' }}>
-				<button
-					size="medium"
-					type="button"
-					variant="outlined"
-					icon="upload"
-					icon-position="left"
-					onClick={handleAttachDocument}
-				>
-					Upload Documents
-				</lh-button>
-			</div>
-
-
-		</lh-container>
-	);
+                <button
+                    type="button"
+                    onClick={handleAttachDocument}
+                    className="w-full rounded-lg border border-slate-600 bg-slate-800 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-700"
+                >
+                    Upload Documents
+                </button>
+            </div>
+        </div>
+    );
 };
 
 export default PatientDetailSidebar;

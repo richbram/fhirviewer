@@ -38,7 +38,7 @@ console.log(paramCode, expression)
                 if (matchingElement?.binding?.valueSet) {
                     bindingValueSetUrl = matchingElement.binding.valueSet;
                 }
-                  
+
             }
         }
        if (!bindingValueSetUrl) return;
@@ -51,7 +51,7 @@ console.log(paramCode, expression)
 
         for (const file of Object.values(valueSets)) {
             const vs = file as any;
-           
+
             if (vs.url === bindingValueSetUrl) {
                 const concepts = vs.compose?.include?.flatMap((inc: any) => inc.concept || []) || [];
                 setOptions(concepts);
@@ -74,7 +74,7 @@ console.log(paramCode, expression)
                             key={`${opt.code}-${idx}`}
                             value={opt.code}
                             className={`px-4 py-2 text-sm ${
-                                value === opt.code ? 'bg-blue-50 font-bold' : 'bg-white font-normal'
+                                value === opt.code ? 'bg-[#fff4ea] font-bold text-[#093452]' : 'bg-white font-normal'
                             }`}
                         >
                             {opt.display || opt.code}
