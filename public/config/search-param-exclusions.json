@@ -1,0 +1,8 @@
+{
+    "excludedParams": {
+        "global": ["_id", "active", "link", "us-core-includeprovenance"],
+        "Encounter": ["class", "identifier", "patient"],
+        "Patient": ["name", "identifier", "address-use", "deceased","general-practitioner", "language", "organization", "phonetic", "telecom", "us-core-includeprovenance"],
+        "Condition": ["patient"]
+    }
+}

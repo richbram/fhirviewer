@@ -1,0 +1,73 @@
+{
+    "1": {
+        "name": "nchie",
+        "description": "A staging partition for NCHIE data",
+        "resources": [
+            "CareTeam",
+            "Condition",
+            "Coverage",
+            "DocumentReference",
+            "Encounter",
+            "Location",
+            "MessageHeader",
+            "Patient",
+            "Practitioner",
+            "Subscription"
+        ]
+    },
+    "5": {
+        "name": "bcbsa",
+        "description": "A staging partition for BCBSA ADT data",
+        "resources": [
+            "Account",
+            "CareTeam",
+            "Condition",
+            "Coverage",
+            "Encounter",
+            "Location",
+            "MessageHeader",
+            "Patient",
+            "Practitioner",
+            "RelatedPerson"
+        ]
+    },
+    "6": {
+        "name": "memroster",
+        "description": "A staging partition for NCHIE Roster data",
+        "resources": ["Patient", "Practitioner"]
+    },
+    "7": {
+        "name": "labdata",
+        "description": "A staging partition for LABDATA ORU data",
+        "resources": [
+            "CareTeam",
+            "DiagnosticReport",
+            "Encounter",
+            "MessageHeader",
+            "Observation",
+            "Organization",
+            "Patient",
+            "Practitioner",
+            "ServiceRequest"
+        ]
+    },
+    "DEFAULT": {
+        "name": null,
+        "description": null,
+        "resources": [
+            "Binary",
+            "CodeSystem",
+            "ConceptMap",
+            "Coverage",
+            "ExplanationOfBenefit",
+            "Group",
+            "Organization",
+            "Patient",
+            "Practitioner",
+            "SearchParameter",
+            "StructureDefinition",
+            "Task",
+            "ValueSet"
+        ]
+    }
+}

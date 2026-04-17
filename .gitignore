@@ -1,0 +1,88 @@
+# macOS
+.DS_Store
+
+# Editor folders
+.vscode/
+.idea/
+
+# Node
+node_modules/
+dist/
+build/
+.cache/
+.next/
+npm-debug.log*
+yarn-error.log*
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+venv/
+.venv/
+pip-wheel-metadata/
+*.egg-info/
+.eggs/
+.python-version
+.pytest_cache/
+
+# Logs and databases
+*.log
+*.sqlite3
+
+# Coverage
+coverage/
+.coverage
+
+# Misc
+Thumbs.db
+```// filepath: /Users/consultintermountain/Projects/fhirviewer/.gitignore
+# macOS
+.DS_Store
+
+# Editor folders
+.vscode/
+.idea/
+
+# Node
+node_modules/
+dist/
+build/
+.cache/
+.next/
+npm-debug.log*
+yarn-error.log*
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+venv/
+.venv/
+pip-wheel-metadata/
+*.egg-info/
+.eggs/
+.python-version
+.pytest_cache/
+
+# Logs and databases
+*.log
+*.sqlite3
+
+# Coverage
+coverage/
+.coverage
+
+#

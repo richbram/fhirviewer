@@ -1,0 +1,22 @@
+
+export const parameters = {
+    fhirEndpoint: import.meta.env.VITE_BCNC_FHIR_ENDPOINT,
+    partitionId: import.meta.env.VITE_BCNC_PARTITION_ID,
+    partitionsList: import.meta.env.VITE_BCNC_PARTITIONS_LIST,
+    hl7PatientSearchUrl: import.meta.env.VITE_BCNC_HL7_PATIENT_SEARCH_URL,
+    clientId: import.meta.env.VITE_BCNC_CLIENT_ID,
+    authority: import.meta.env.VITE_BCNC_AUTHORITY,
+    tenantId: import.meta.env.VITE_BCNC_TENANT_ID,
+    clientCapabilities: import.meta.env.VITE_BCNC_CLIENT_CAPABILITIES,
+    cacheLocation: import.meta.env.VITE_BCNC_CACHE_LOCATION,
+    appName: import.meta.env.VITE_BCNC_APP_NAME,
+    appVersion: import.meta.env.VITE_BCNC_APP_VERSION,
+    scope: import.meta.env.VITE_BCNC_SCOPE,
+    appBuildID: import.meta.env.VITE_BCNC_APP_BUILD_ID,
+    appGitBranch: import.meta.env.VITE_BCNC_APP_GIT_BRANCH,
+    redirectURI: window.location.origin,
+    postLogoutRedirectURI: window.location.origin,
+    isAdmin: import.meta.env.VITE_BCNC_IS_ADMIN === "true",
+    adminGroup: import.meta.env.VITE_BCNC_ADMIN_GROUP,
+    dataSecGroup: import.meta.env.VITE_BCNC_DATA_SEC_GROUP,
+};

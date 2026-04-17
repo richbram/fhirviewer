@@ -1,0 +1,24 @@
+{
+    "resourceType": "Bundle",
+    "type": "collection",
+    "entry": [
+        {
+            "resource": {
+                "resourceType": "ImplementationGuide",
+                "id": "us-core",
+                "name": "US Core",
+                "version": "3.1.1",
+                "url": "http://hl7.org/fhir/us/core/ImplementationGuide/hl7.fhir.us.core"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "ImplementationGuide",
+                "id": "carin-bb",
+                "name": "CARIN for Blue Button",
+                "version": "2.0.0",
+                "url": "http://hl7.org/fhir/us/carin-bb/ImplementationGuide/hl7.fhir.us.carin-bb"
+            }
+        }
+    ]
+}
