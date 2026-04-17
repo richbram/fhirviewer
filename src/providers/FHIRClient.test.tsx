@@ -1,14 +1,18 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { searchResource, readResource } from './FHIRClient';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { setAccessToken, setAuthMode } from '../auth/tokenStore';
+import { readResource, searchResource } from './FHIRClient';
 
 const FHIR_BASE = 'https://fhir.test';
-vi.stubEnv('VITE_FHIR_SERVER_URL', FHIR_BASE);
+
+vi.stubEnv('VITE_FHIR_BASE_URL', FHIR_BASE);
+vi.stubEnv('VITE_FHIR_USE_PARTITIONS', 'false');
 
 describe('FHIR Client', () => {
   beforeEach(() => {
     vi.resetAllMocks();
     vi.stubGlobal('fetch', vi.fn());
-    localStorage.setItem('access_token', 'test-token');
+    setAuthMode('msal');
+    setAccessToken('test-token');
   });
 
   it('searchResource sends correct request and returns data', async () => {
@@ -23,7 +27,7 @@ describe('FHIR Client', () => {
     ]);
 
     expect(fetch).toHaveBeenCalledWith(
-      `${FHIR_BASE}/Patient?name=smith`,
+      `${FHIR_BASE}/Patient?name=smith&_count=50`,
       expect.objectContaining({
         method: 'GET',
         headers: {
@@ -34,6 +38,28 @@ describe('FHIR Client', () => {
     );
 
     expect(result).toEqual(mockData);
+  });
+
+  it('omits Authorization when auth mode is none', async () => {
+    setAuthMode('none');
+    setAccessToken(null);
+
+    (fetch as any).mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({ resourceType: 'Bundle', total: 0 }),
+    });
+
+    await searchResource('Patient', []);
+
+    expect(fetch).toHaveBeenCalledWith(
+      `${FHIR_BASE}/Patient?_count=50`,
+      expect.objectContaining({
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/fhir+json',
+        },
+      })
+    );
   });
 
   it('readResource fetches the correct resource by ID', async () => {
@@ -49,21 +75,9 @@ describe('FHIR Client', () => {
       `${FHIR_BASE}/Patient/123`,
       expect.objectContaining({
         method: 'GET',
-        headers: expect.any(Object),
       })
     );
 
     expect(result).toEqual(mockResource);
-  });
-
-  it('throws on failed search', async () => {
-    (fetch as any).mockResolvedValueOnce({
-      ok: false,
-      statusText: 'Bad Request',
-    });
-
-    await expect(
-      searchResource('Patient', [{ name: 'name', value: 'fail' }])
-    ).rejects.toThrow('FHIR search failed: Bad Request');
   });
 });

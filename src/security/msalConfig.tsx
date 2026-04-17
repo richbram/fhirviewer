@@ -1,11 +1,11 @@
 import { Configuration } from '@azure/msal-browser';
-import { parameters } from '../parameters';
+import { msalAuthorityBase, msalClientId, msalTenantId, redirectUri } from '../config/runtime';
+
 const msalConfig: Configuration = {
 	auth: {
-		clientId: import.meta.env.VITE_APP_BCNC_CLIENT_ID,
-		authority: import.meta.env.VITE_APP_BCNC_AUTHORITY + import.meta.env.VITE_APP_BCNC_TENANT_ID,
-		redirectUri: parameters.redirectURI,
-
+		clientId: msalClientId,
+		authority: `${msalAuthorityBase}${msalTenantId}`,
+		redirectUri,
 	},
 	cache: {
 		cacheLocation: 'localStorage',
@@ -14,4 +14,3 @@ const msalConfig: Configuration = {
 };
 
 export default msalConfig;
-
